@@ -24,7 +24,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "BASE_IMG", "\"http://192.168.43.22/jupel/img/\"")
+        buildConfigField("String", "BASE_IMG", "\"http://192.168.100.36:8000/assets/images/\"")
         buildConfigField("String", "BASE_API", "\"http://192.168.100.36:8000/api/\"")
     }
 
@@ -49,7 +49,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.18'
     implementation 'com.daimajia.swipelayout:library:1.2.0@aar'
 //    implementation 'com.github.GrenderG:Toasty:1.5.`0'
     implementation 'com.google.android.material:material:1.0.0'

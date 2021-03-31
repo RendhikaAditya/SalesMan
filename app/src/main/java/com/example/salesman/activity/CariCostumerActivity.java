@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.salesman.BuildConfig;
+import com.example.salesman.MainActivity;
 import com.example.salesman.R;
 import com.example.salesman.databinding.ActivityCariCostumerBinding;
 
@@ -100,7 +102,10 @@ public class CariCostumerActivity extends AppCompatActivity {
         binding.namaCost.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(CariCostumerActivity.this, binding.namaCost.getText().toString(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(CariCostumerActivity.this, MainActivity.class);
+                intent.putExtra("NAMA", binding.namaCost.getText().toString());
+                binding.namaCost.setText("");
+                startActivity(intent);
             }
         });
 
