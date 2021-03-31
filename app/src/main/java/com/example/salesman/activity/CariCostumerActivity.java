@@ -38,6 +38,7 @@ public class CariCostumerActivity extends AppCompatActivity {
     String link = BuildConfig.BASE_API;
     ArrayList<String> cost = new ArrayList<>();
     ArrayAdapter<String> adapter;
+    String nama;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,19 @@ public class CariCostumerActivity extends AppCompatActivity {
         alertDialog = new SpotsDialog.Builder().setContext(this).setMessage("Sedang Mengambil Data ....").setCancelable(false).build();
 
         getCost();
+
+        Intent i = getIntent();
+        nama = i.getStringExtra("token");
+
+        binding.namaCost.setText(nama);
+
+        binding.scan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CariCostumerActivity.this,ScannerActivity.class);
+                startActivity(i);
+            }
+        });
 
 
     }
