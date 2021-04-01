@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sw_branda"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/sw_branda"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -31,7 +31,9 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_close"
+                    android:src="@drawable/ic_arrow_down"
+                    android:rotation="90"
+                    android:background="@drawable/shape_ed"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:tint="@color/black"
@@ -46,15 +48,16 @@
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/shape_ed"
                     android:searchIcon="@drawable/ic_search"
+                    android:closeIcon="@drawable/ic_close"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btnFilter"
+                    app:layout_constraintEnd_toStartOf="@+id/shapeBtn"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/back"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <RelativeLayout
-                    android:id="@+id/btnFilter"
                     android:layout_width="40dp"
+                    android:id="@+id/shapeBtn"
                     android:layout_height="40dp"
                     android:background="@drawable/shape_ed"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -66,7 +69,18 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:src="@drawable/ic_filter"
+                        android:id="@+id/btnFilter"
                         app:tint="@color/black" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_close"
+                        android:visibility="gone"
+                        android:id="@+id/btnFilterClose"
+                        app:tint="@color/black" />
+
 
                 </RelativeLayout>
 
@@ -76,109 +90,198 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="70dp">
+                android:layout_height="match_parent">
 
-                <androidx.core.widget.NestedScrollView
-                    android:id="@+id/layout_branda"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
-                    <LinearLayout
+                    <androidx.core.widget.NestedScrollView
+                        android:id="@+id/layout_branda"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        tools:ignore="MissingConstraints">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="20dp"
-                            android:background="@drawable/top_shape"
                             android:orientation="vertical">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:orientation="horizontal">
-
-                                <de.hdodenhof.circleimageview.CircleImageView
-                                    android:id="@+id/imgCostumer"
-                                    android:layout_width="50dp"
-                                    android:layout_height="50dp"
-                                    android:layout_gravity="center"
-                                    android:layout_marginLeft="30dp"
-                                    android:src="@color/black" />
+                                android:layout_marginBottom="20dp"
+                                android:background="@drawable/top_shape"
+                                android:orientation="vertical">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="30dp"
-                                    android:layout_marginRight="20dp"
-                                    android:orientation="vertical">
+                                    android:layout_marginTop="10dp"
+                                    android:orientation="horizontal">
 
-                                    <TextView
-                                        android:id="@+id/namaCost"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/quicksand"
-                                        android:text="Nama TOko Costumer"
-                                        android:textColor="@color/black"
-                                        android:textStyle="bold" />
+                                    <de.hdodenhof.circleimageview.CircleImageView
+                                        android:id="@+id/imgCostumer"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="30dp"
+                                        android:src="@color/black" />
 
-                                    <TextView
-                                        android:id="@+id/alamatCost"
-                                        android:layout_width="wrap_content"
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/quicksand"
-                                        android:textColor="@color/cardview_dark_background" />
+                                        android:layout_marginLeft="30dp"
+                                        android:layout_marginRight="20dp"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/namaCost"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/quicksand"
+                                            android:text="Nama TOko Costumer"
+                                            android:textColor="@color/black"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:id="@+id/alamatCost"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/quicksand"
+                                            android:textColor="@color/cardview_dark_background" />
+
+                                    </LinearLayout>
 
                                 </LinearLayout>
 
-                            </LinearLayout>
-
-                            <RelativeLayout
-                                android:id="@+id/btnRiwayatOrderCost"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:background="@drawable/shape_border">
-
-                                <TextView
+                                <RelativeLayout
+                                    android:id="@+id/btnRiwayatOrderCost"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/quicksand"
-                                    android:paddingLeft="20dp"
-                                    android:paddingTop="10dp"
-                                    android:paddingRight="20dp"
-                                    android:paddingBottom="10dp"
-                                    android:text="Ambil Riwayat Order"
-                                    android:textColor="@color/black"
-                                    android:textStyle="bold" />
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:background="@drawable/shape_border">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/quicksand"
+                                        android:paddingLeft="20dp"
+                                        android:paddingTop="10dp"
+                                        android:paddingRight="20dp"
+                                        android:paddingBottom="10dp"
+                                        android:text="Ambil Riwayat Order"
+                                        android:textColor="@color/black"
+                                        android:textStyle="bold" />
+
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                            <pl.droidsonroids.gif.GifImageView
+                                android:id="@+id/loadSearch"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:src="@drawable/infinity"
+                                android:visibility="gone" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                android:layout_marginBottom="60dp"
+                                android:id="@+id/rvCariBarang"/>
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/layout_katBarang"
+                                android:layout_marginBottom="60dp">
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/rvBarang"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+
+
+                                <pl.droidsonroids.gif.GifImageView
+                                    android:id="@+id/loadMore"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:layout_alignParentBottom="true"
+                                    android:background="@color/gray"
+                                    android:src="@drawable/infinity"
+                                    android:visibility="gone" />
 
                             </RelativeLayout>
+                        </LinearLayout>
+                    </androidx.core.widget.NestedScrollView>
 
+                    <RelativeLayout
+                        android:id="@+id/totalLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/bot_shape"
+                        android:clipToPadding="false"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_branda"
+                        app:layout_constraintVertical_bias="1.0"
+                        tools:ignore="MissingConstraints"
+                        tools:layout_editor_absoluteX="0dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quicksand"
+                                android:text="Total Belanja"
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/totalBelanja"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quicksand"
+                                android:text="Rp 100.000"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rvBarang"
+                        <RelativeLayout
+                            android:id="@+id/nextOrder"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/shape_border">
 
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quicksand"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="10dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="10dp"
+                                android:text="Lanjut"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
 
-                        <pl.droidsonroids.gif.GifImageView
-                            android:id="@+id/loadMore"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_alignParentBottom="true"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginBottom="100dp"
-                            android:src="@drawable/infinity"
-                            android:visibility="gone" />
-                    </LinearLayout>
-                </androidx.core.widget.NestedScrollView>
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
                 <com.facebook.shimmer.ShimmerFrameLayout
@@ -196,61 +299,5 @@
                     android:visibility="gone" />
             </RelativeLayout>
         </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/totalLayout"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/bot_shape"
-            android:visibility="visible">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/quicksand"
-                    android:text="Total Belanja"
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/totalBelanja"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/quicksand"
-                    android:text="Rp 100.000"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <RelativeLayout
-                android:id="@+id/nextOrder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/shape_border">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/quicksand"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingRight="20dp"
-                    android:paddingBottom="10dp"
-                    android:text="Lanjut"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-        </RelativeLayout>
     </RelativeLayout>
 </RelativeLayout>

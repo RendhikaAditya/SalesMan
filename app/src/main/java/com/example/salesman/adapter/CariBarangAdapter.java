@@ -26,7 +26,6 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.salesman.BuildConfig;
 import com.example.salesman.R;
 import com.example.salesman.model.BarangModel;
-import com.example.salesman.model.KategoriModel;
 import com.example.salesman.util.InterfaceBridge;
 import com.example.salesman.util.InterfaceHarga;
 import com.example.salesman.util.PrefManager;
@@ -41,23 +40,23 @@ import java.util.Locale;
 
 import pl.droidsonroids.gif.GifImageView;
 
-public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ListViewHolder> {
+public class CariBarangAdapter extends RecyclerView.Adapter<CariBarangAdapter.ListViewHolder> {
     Context context;
     List<BarangModel> barang;
     String linkImg = BuildConfig.BASE_IMG;
     String link = BuildConfig.BASE_API;
-    InterfaceBridge interfaceBridge;
+    InterfaceHarga interfaceHarga;
 
-    public BarangAdapter(List<BarangModel> barang, InterfaceBridge interfaceBridge) {
+    public CariBarangAdapter(List<BarangModel> barang, InterfaceHarga interfaceHarga) {
         this.barang = barang;
-        this.interfaceBridge = interfaceBridge;
+        this.interfaceHarga = interfaceHarga;
     }
 
     @NonNull
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.barang_row,parent,false);
-        BarangAdapter.ListViewHolder holder = new BarangAdapter.ListViewHolder(v);
+        CariBarangAdapter.ListViewHolder holder = new CariBarangAdapter.ListViewHolder(v);
         return holder;
     }
 
@@ -137,7 +136,7 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ListViewHo
                                 }else {
                                     holder.jmlBarang.setText(jml+"");
                                 }
-                                interfaceBridge.onUpdate(model.getHarga_barang());
+                                interfaceHarga.onUpdateTotal(model.getHarga_barang());
                             }else {
                                 Toast.makeText(context, "Sistem Bermasalah", Toast.LENGTH_SHORT).show();
                             }
@@ -167,7 +166,7 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ListViewHo
                             if (response.getInt("code")==200){
                                 int jml = Integer.valueOf(holder.jmlBarang.getText().toString())+1;
                                 holder.jmlBarang.setText(jml+"");
-                                interfaceBridge.onUpdate(model.getHarga_barang());
+                                interfaceHarga.onUpdateTotal(model.getHarga_barang());
                             }else {
                                 Toast.makeText(context, "Sistem Bermasalah", Toast.LENGTH_SHORT).show();
                             }
@@ -201,7 +200,7 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ListViewHo
                             if (response.getInt("code")==200){
                                 holder.jmlLayout.setVisibility(View.VISIBLE);
                                 holder.add.setVisibility(View.GONE);
-                                interfaceBridge.onUpdate(model.getHarga_barang());
+                                interfaceHarga.onUpdateTotal(model.getHarga_barang());
                             }else {
                                 holder.jmlLayout.setVisibility(View.GONE);
                                 holder.add.setVisibility(View.VISIBLE);

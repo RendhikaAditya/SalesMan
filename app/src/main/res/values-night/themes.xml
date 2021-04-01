@@ -6,12 +6,18 @@
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondary">@color/cardview_dark_background</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:windowBackground">@color/white</item>
+        <item name="editTextColor">@color/black</item>
+        <item name="hintTextColor">@color/cardview_dark_background</item>
         <!-- Customize your theme here. -->
+    </style>
+    <style name="RadioButton" parent="Theme.MaterialComponents">
+        <item name="radioButtonStyle">@color/gray</item>
+        <item name="android:buttonTint" tools:ignore="NewApi">@color/cardview_dark_background</item>
     </style>
 </resources>

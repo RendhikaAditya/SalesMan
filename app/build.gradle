@@ -24,8 +24,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "BASE_IMG", "\"http://192.168.100.36:8000/assets/images/\"")
-        buildConfigField("String", "BASE_API", "\"http://192.168.100.36:8000/api/\"")
+        buildConfigField("String", "BASE_IMG", "\"http://192.168.100.36:8080/assets/images/\"")
+        buildConfigField("String", "BASE_API", "\"http://192.168.100.36:8080/api/\"")
     }
 
     buildTypes {
@@ -65,4 +65,5 @@ dependencies {
     implementation 'com.xwray:passwordview:1.0'
     implementation 'com.budiyev.android:code-scanner:2.1.0'
     implementation 'com.github.lolobosse.contactsautocompletetextview:library:0.1.2'
+    implementation 'com.eminayar.panterdialog:panter-dialog:0.0.2.1'
 }

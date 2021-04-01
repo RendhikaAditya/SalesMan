@@ -82,13 +82,15 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriAdapter.ViewHo
                                     JSONObject barang = data.getJSONObject(i);
                                     barangModels.add(new BarangModel(
                                             barang.getInt("id_barang"),
-                                            barang.getInt("id_kategori"),
                                             barang.getString("nama_barang"),
                                             barang.getInt("harga_barang"),
+                                            barang.getInt("id_kategori"),
+                                            barang.getString("jml_barang"),
+                                            barang.getString("id_costumer"),
                                             barang.getString("foto_barang"),
-                                            barang.getString("nama_kategori")
-
+                                            barang.getString("hargaSementara")
                                     ));
+//                                    Log.d("barang", "id kranjang"+barang.getInt("id_keranjang"));
                                     adapter(barangModels, rv_barang);
                                 }
                                 if (barangModels.isEmpty()){

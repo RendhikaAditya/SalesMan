@@ -68,6 +68,7 @@ public class CariCostumerActivity extends AppCompatActivity {
 
     private void getCost() {
         alertDialog.show();
+        Log.d("url ","code:"+link);
         AndroidNetworking.get(link+"costumer")
                 .setPriority(Priority.MEDIUM)
                 .build()

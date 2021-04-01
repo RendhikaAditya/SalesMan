@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
+import com.example.salesman.MainActivity;
 import com.example.salesman.R;
 import com.google.zxing.Result;
 import com.karumi.dexter.Dexter;
@@ -45,11 +46,10 @@ public class ScannerActivity extends AppCompatActivity {
 //                        String message = "result :\n" + result.getText();
 //                        showAlertDialog(message);
 //                        Toast.makeText(MainActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(ScannerActivity.this, CariCostumerActivity.class);
+                        Intent i = new Intent(ScannerActivity.this, MainActivity.class);
                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        i.putExtra("token", result.getText());
-
+                        i.putExtra("NAMA", result.getText());
                         startActivity(i);
                         finish();
                     }
