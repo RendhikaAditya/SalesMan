@@ -85,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
+                        alertDialog.hide();
                         Log.d("code","eror : "+anError);
                         Toast.makeText(LoginActivity.this, "Koneksi Bermasalah", Toast.LENGTH_SHORT).show();
                     }

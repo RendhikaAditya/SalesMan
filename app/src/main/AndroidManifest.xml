@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.salesman">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SalesMan"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ScannerActivity"></activity>
+        <activity android:name=".activity.DetailRiwayatActivity"></activity>
+        <activity android:name=".activity.RiwayatActivity" />
+        <activity android:name=".activity.KeranjangActivity" />
+        <activity android:name=".activity.ScannerActivity" />
         <activity android:name=".activity.CariCostumerActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".activity.LoginActivity">
@@ -25,7 +31,5 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

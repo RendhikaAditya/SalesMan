@@ -21,6 +21,7 @@ import com.example.salesman.BuildConfig;
 import com.example.salesman.MainActivity;
 import com.example.salesman.R;
 import com.example.salesman.databinding.ActivityCariCostumerBinding;
+import com.example.salesman.util.PrefManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,8 +38,11 @@ public class CariCostumerActivity extends AppCompatActivity {
     AlertDialog alertDialog;
     String link = BuildConfig.BASE_API;
     ArrayList<String> cost = new ArrayList<>();
+    ArrayList<String> costLokasi = new ArrayList<>();
+    ArrayAdapter<String> adapterLokasi;
     ArrayAdapter<String> adapter;
     String nama;
+    PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,7 @@ public class CariCostumerActivity extends AppCompatActivity {
         binding = ActivityCariCostumerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         AndroidNetworking.initialize(this);
+        prefManager = new PrefManager(this);
         alertDialog = new SpotsDialog.Builder().setContext(this).setMessage("Sedang Mengambil Data ....").setCancelable(false).build();
 
         getCost();
@@ -63,10 +68,22 @@ public class CariCostumerActivity extends AppCompatActivity {
             }
         });
 
+        binding.btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                prefManager.setLoginStatus(false);
+                prefManager.setLvl("");
+                prefManager.setIdUser("");
+                Intent intent = new Intent(CariCostumerActivity.this, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 
     private void getCost() {
+        Log.d("log ","Link : "+link+"costumer");
         alertDialog.show();
         Log.d("url ","code:"+link);
         AndroidNetworking.get(link+"costumer")
@@ -81,7 +98,7 @@ public class CariCostumerActivity extends AppCompatActivity {
                             JSONObject meta = response.getJSONObject("meta");
                             if (meta.getString("code").equalsIgnoreCase("200")) {
                                 JSONArray d = response.getJSONArray("data");
-                                alertDialog.hide();
+                                getCostLokasi();
                                 Log.d("data", "yeay : ");
                                 for (int i = 0; i < d.length(); i++) {
                                     JSONObject data = d.getJSONObject(i);
@@ -98,11 +115,63 @@ public class CariCostumerActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
+                        alertDialog.hide();
                         Log.d("eror", "code : " + anError);
                         Toast.makeText(CariCostumerActivity.this, "Pastikan Prangkat Terhubung Ke Internet", Toast.LENGTH_SHORT).show();
                         finish();
                     }
                 });
+    }
+
+    private void getCostLokasi() {
+        AndroidNetworking.get(link+"costumer-regional?id_sales="+prefManager.getIdUser())
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            alertDialog.hide();
+                            JSONArray dataCost = response.getJSONArray("costumer");
+                            Log.d("dataCOst", "data : "+dataCost);
+                            if (dataCost.length()>0){
+                                for (int i=0;i<dataCost.length();i++) {
+                                    JSONObject data = dataCost.getJSONObject(i);
+                                    costLokasi.add(data.getString("costumer"));
+                                }
+                                setAdapterLookasi();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        alertDialog.hide();
+                        Log.d("eror", "code : " + anError);
+                        Toast.makeText(CariCostumerActivity.this, "Pastikan Prangkat Terhubung Ke Internet", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                });
+    }
+
+    private void setAdapterLookasi() {
+        adapterLokasi = new ArrayAdapter<>(this,
+                R.layout.row_item_1, costLokasi);
+        binding.rvCost.setAdapter(adapterLokasi);
+
+
+        Log.d("data", "hasil : " + costLokasi);
+        binding.rvCost.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(CariCostumerActivity.this, MainActivity.class);
+                intent.putExtra("NAMA", costLokasi.get(position));
+                binding.namaCost.setText("");
+                startActivity(intent);
+            }
+        });
     }
 
     @SuppressLint("ResourceAsColor")

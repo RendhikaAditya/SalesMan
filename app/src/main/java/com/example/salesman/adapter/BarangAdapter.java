@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,11 +47,11 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ListViewHo
     List<BarangModel> barang;
     String linkImg = BuildConfig.BASE_IMG;
     String link = BuildConfig.BASE_API;
-    InterfaceBridge interfaceBridge;
+    InterfaceHarga interfaceHarga;
 
-    public BarangAdapter(List<BarangModel> barang, InterfaceBridge interfaceBridge) {
+    public BarangAdapter(List<BarangModel> barang, InterfaceHarga interfaceHarga) {
         this.barang = barang;
-        this.interfaceBridge = interfaceBridge;
+        this.interfaceHarga = interfaceHarga;
     }
 
     @NonNull
@@ -67,6 +68,12 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ListViewHo
         Locale localeID = new Locale("in", "ID");
         NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
         holder.namaBarang.setText(model.getNama_barang());
+        holder.keterangan.setText(Html.fromHtml(model.getKeterangan()));
+        if (model.getKeterangan().equals("null")){
+            holder.keterangan.setVisibility(View.GONE);
+        }else{
+            holder.keterangan.setVisibility(View.VISIBLE);
+        }
         holder.hargaBarang.setText(formatRupiah.format((double)model.getHarga_barang()));
         Picasso.get().load(linkImg+model.getFoto_barang()).into(holder.fotoBarang);
         Log.d("barang", "foto : "+linkImg+model.getFoto_barang());
@@ -110,11 +117,17 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ListViewHo
             Log.d("jalan", "hahax : "+model.getJml_barang()+" id "+model.getId_costumer()+" lvl "+prefManager.getLvl());
 
             if (model.getId_costumer().equalsIgnoreCase(prefManager.getLvl())){
-                holder.jmlLayout.setVisibility(View.VISIBLE);
-                holder.add.setVisibility(View.GONE);
-                holder.jmlBarang.setText(model.getJml_barang());
+                if (model.getId_sales().equalsIgnoreCase(prefManager.getIdUser())) {
+                    holder.jmlLayout.setVisibility(View.VISIBLE);
+                    holder.add.setVisibility(View.GONE);
+                    holder.jmlBarang.setText(model.getJml_barang());
+                }
             }
+        }
 
+        if (Integer.valueOf(holder.jmlBarang.getText().toString())<=0){
+            holder.jmlLayout.setVisibility(View.GONE);
+            holder.add.setVisibility(View.VISIBLE);
         }
     }
 
@@ -137,7 +150,7 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ListViewHo
                                 }else {
                                     holder.jmlBarang.setText(jml+"");
                                 }
-                                interfaceBridge.onUpdate(model.getHarga_barang());
+                                interfaceHarga.onUpdateTotal(model.getHarga_barang());
                             }else {
                                 Toast.makeText(context, "Sistem Bermasalah", Toast.LENGTH_SHORT).show();
                             }
@@ -167,7 +180,7 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ListViewHo
                             if (response.getInt("code")==200){
                                 int jml = Integer.valueOf(holder.jmlBarang.getText().toString())+1;
                                 holder.jmlBarang.setText(jml+"");
-                                interfaceBridge.onUpdate(model.getHarga_barang());
+                                interfaceHarga.onUpdateTotal(model.getHarga_barang());
                             }else {
                                 Toast.makeText(context, "Sistem Bermasalah", Toast.LENGTH_SHORT).show();
                             }
@@ -201,7 +214,7 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ListViewHo
                             if (response.getInt("code")==200){
                                 holder.jmlLayout.setVisibility(View.VISIBLE);
                                 holder.add.setVisibility(View.GONE);
-                                interfaceBridge.onUpdate(model.getHarga_barang());
+                                interfaceHarga.onUpdateTotal(model.getHarga_barang());
                             }else {
                                 holder.jmlLayout.setVisibility(View.GONE);
                                 holder.add.setVisibility(View.VISIBLE);
@@ -249,13 +262,14 @@ public class BarangAdapter extends RecyclerView.Adapter<BarangAdapter.ListViewHo
     public class ListViewHolder extends RecyclerView.ViewHolder {
         ImageView fotoBarang;
         CardView cardFoto;
-        TextView namaBarang, hargaBarang, jmlBarang;
+        TextView namaBarang, hargaBarang, jmlBarang, keterangan;
         RelativeLayout plus, minus;
         LinearLayout add,jmlLayout;
         GifImageView loading;
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
             context = itemView.getContext();
+            keterangan = itemView.findViewById(R.id.txtKeterangan);
             add = itemView.findViewById(R.id.button_add);
             plus = itemView.findViewById(R.id.button_plus);
             minus = itemView.findViewById(R.id.button_minus);

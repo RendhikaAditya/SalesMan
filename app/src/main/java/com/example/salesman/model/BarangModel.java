@@ -2,23 +2,26 @@ package com.example.salesman.model;
 
 
 public class BarangModel {
-
     private int id_barang;
     private String nama_barang;
+    private String keterangan;
     private int harga_barang;
     private int id_kategori;
     private String jml_barang;
     private String id_costumer;
+    private String id_sales;
     private String foto_barang;
     private String hargaSementara;
 
-    public BarangModel(int id_barang, String nama_barang, int harga_barang, int id_kategori, String jml_barang, String id_costumer, String foto_barang, String hargaSementara) {
+    public BarangModel(int id_barang, String nama_barang, String keterangan, int harga_barang, int id_kategori, String jml_barang, String id_costumer, String id_sales, String foto_barang, String hargaSementara) {
         this.id_barang = id_barang;
         this.nama_barang = nama_barang;
+        this.keterangan = keterangan;
         this.harga_barang = harga_barang;
         this.id_kategori = id_kategori;
         this.jml_barang = jml_barang;
         this.id_costumer = id_costumer;
+        this.id_sales = id_sales;
         this.foto_barang = foto_barang;
         this.hargaSementara = hargaSementara;
     }
@@ -37,6 +40,14 @@ public class BarangModel {
 
     public void setNama_barang(String nama_barang) {
         this.nama_barang = nama_barang;
+    }
+
+    public String getKeterangan() {
+        return keterangan;
+    }
+
+    public void setKeterangan(String keterangan) {
+        this.keterangan = keterangan;
     }
 
     public int getHarga_barang() {
@@ -69,6 +80,14 @@ public class BarangModel {
 
     public void setId_costumer(String id_costumer) {
         this.id_costumer = id_costumer;
+    }
+
+    public String getId_sales() {
+        return id_sales;
+    }
+
+    public void setId_sales(String id_sales) {
+        this.id_sales = id_sales;
     }
 
     public String getFoto_barang() {

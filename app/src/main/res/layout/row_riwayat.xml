@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="30dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID Transaksi"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/black"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="03422211930384899"
+                android:textColor="@color/dark"
+                android:fontFamily="@font/poppins_medium"
+                android:id="@+id/idTransaksi"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20-12-2020"
+                android:textColor="@color/dark"
+                android:layout_alignParentRight="true"
+                android:fontFamily="@font/poppins_medium"
+                android:id="@+id/tglTransaksi"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Cost"
+            android:id="@+id/namaCostumer"
+            android:textSize="18dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/black"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18 Item"
+                android:layout_centerVertical="true"
+                android:textColor="@color/dark"
+                android:fontFamily="@font/poppins_medium"
+                android:id="@+id/jmlItem"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp 100.000"
+                android:textSize="18dp"
+                android:textColor="@color/second"
+                android:layout_alignParentRight="true"
+                android:fontFamily="@font/poppins_bold"
+                android:id="@+id/hargaTotal"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="on going"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:id="@+id/status"
+            android:textColor="@color/third"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

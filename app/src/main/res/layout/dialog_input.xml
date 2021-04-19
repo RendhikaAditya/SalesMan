@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/gray"
+    android:orientation="vertical"
+    android:background="@drawable/shape_border">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/bot_shape_2"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ubah Harga Barang"
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Input Harga Baru"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/shape_border"
+        android:paddingTop="5dp"
+        android:hint="Masukan Harga Baru"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:inputType="phone"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="@android:color/tertiary_text_light"
+        android:id="@+id/hargaBarang"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:weightSum="2"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/batal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Batal"
+            android:textColor="@color/main"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginLeft="40dp"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/simpan"
+            android:gravity="center"
+            android:text="Simpan"
+            android:textColor="@color/second"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:layout_marginRight="40dp"/>
+    </LinearLayout>
+
+</LinearLayout>

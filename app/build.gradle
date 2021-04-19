@@ -24,8 +24,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "BASE_IMG", "\"http://192.168.100.36:8080/assets/images/\"")
-        buildConfigField("String", "BASE_API", "\"http://192.168.100.36:8080/api/\"")
+        buildConfigField("String", "BASE_IMG", "\"http://marijaya.com/assets/images/\"")
+        buildConfigField("String", "BASE_API", "\"http://marijaya.com/api/\"")
     }
 
     buildTypes {

@@ -83,10 +83,12 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriAdapter.ViewHo
                                     barangModels.add(new BarangModel(
                                             barang.getInt("id_barang"),
                                             barang.getString("nama_barang"),
+                                            barang.getString("keterangan"),
                                             barang.getInt("harga_barang"),
                                             barang.getInt("id_kategori"),
                                             barang.getString("jml_barang"),
                                             barang.getString("id_costumer"),
+                                            barang.getString("id_sales"),
                                             barang.getString("foto_barang"),
                                             barang.getString("hargaSementara")
                                     ));

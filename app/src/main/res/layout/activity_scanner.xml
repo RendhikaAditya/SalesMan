@@ -9,20 +9,24 @@
     <ImageView
         android:id="@+id/ivBgContent"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/bg_content"
+        android:layout_centerInParent="true"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_q"
         android:layout_centerVertical="true"
         tools:ignore="ContentDescription" />
 
+
     <com.budiyev.android.codescanner.CodeScannerView
         android:id="@+id/scannerView"
+        android:translationZ="-1dp"
         android:layout_width="match_parent"
+
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         app:autoFocusButtonColor="@android:color/transparent"
         app:autoFocusButtonVisible="false"
-        app:flashButtonColor="@android:color/transparent"
+        app:flashButtonColor="@color/white"
         app:flashButtonVisible="false"
         app:frameAspectRatioHeight="1"
         app:frameAspectRatioWidth="1"

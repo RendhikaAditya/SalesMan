@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/gray"
+    android:orientation="vertical"
+    android:background="@drawable/shape_border">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/bot_shape_2"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Target Penjualan"
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_light"
+        android:text="Target Penjualan Costumer"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rp 40.000.000"
+        android:id="@+id/targetJual"
+        android:textSize="19dp"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/second"/>
+
+    <TextView
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_light"
+        android:text="Target Penjualan Tercapai"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rp 21.000.000"
+        android:textSize="19dp"
+        android:id="@+id/targetTercapai"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/second"/>
+
+    <TextView
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_light"
+        android:text="Sisa Target Penjualan"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rp 29.000.000"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/sisaTarget"
+        android:textSize="19dp"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/second"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/dark"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:clickable="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:background="@drawable/btn_effect"
+            android:layout_height="wrap_content"
+            android:id="@+id/simpan"
+            android:paddingLeft="70dp"
+            android:paddingRight="70dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Ok"
+            android:textColor="@color/second"
+            android:textSize="17dp"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+
+</LinearLayout>

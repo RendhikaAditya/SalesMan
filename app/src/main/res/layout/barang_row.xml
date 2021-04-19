@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="30dp"
     android:layout_marginLeft="30dp"
     android:layout_marginRight="30dp">
 
@@ -16,9 +17,6 @@
             android:id="@+id/cardImg"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="0dp"
             tools:ignore="MissingConstraints">
@@ -27,6 +25,7 @@
                 android:id="@+id/img_barang"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scaleType="centerCrop"
                 android:src="@color/cardview_dark_background" />
         </androidx.cardview.widget.CardView>
 
@@ -34,10 +33,10 @@
         <TextView
             android:id="@+id/namaBarang"
             android:layout_width="192dp"
-            android:layout_height="24dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:fontFamily="@font/quicksand"
-            android:text="Nama Barang Yang CUkup panjang "
+            android:fontFamily="@font/poppins_medium"
+            android:text="Nama Barang Yang CUkup panjang Baju Kaos Polos Katun"
             android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/button"
             app:layout_constraintHorizontal_bias="0.0"
@@ -45,17 +44,18 @@
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteY="4dp" />
 
+
         <TextView
             android:id="@+id/hargaBarang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:fontFamily="@font/quicksand"
+            android:fontFamily="@font/poppins_bold"
             android:text="Rp 100.000"
-            android:textColor="@color/black"
+            android:textColor="@color/second"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/cardImg"
-            app:layout_constraintTop_toBottomOf="@+id/namaBarang"
+            app:layout_constraintTop_toBottomOf="@+id/txtKeterangan"
             tools:ignore="MissingConstraints" />
 
         <RelativeLayout
@@ -74,18 +74,21 @@
                 android:id="@+id/button_add"
                 android:visibility="visible"
                 android:layout_width="wrap_content"
+                android:backgroundTint="@color/third"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_border">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
                     android:text="Add"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/white" />
 
                 <pl.droidsonroids.gif.GifImageView
                     android:layout_width="20dp"
@@ -106,6 +109,7 @@
                 <RelativeLayout
                     android:id="@+id/button_minus"
                     android:layout_width="30dp"
+                    android:backgroundTint="@color/third"
                     android:layout_height="30dp"
                     android:background="@drawable/shape_border">
 
@@ -113,10 +117,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:fontFamily="@font/quicksand"
+                        android:fontFamily="@font/poppins_bold"
                         android:textStyle="bold"
                         android:text="-"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/white" />
                 </RelativeLayout>
 
                 <TextView
@@ -124,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:text="1"
                     android:id="@+id/jmlBarang"
-                    android:fontFamily="@font/quicksand"
+                    android:fontFamily="@font/poppins_bold"
                     android:textStyle="bold"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
@@ -137,6 +141,7 @@
                     android:id="@+id/button_plus"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:backgroundTint="@color/third"
                     android:background="@drawable/shape_border">
 
                     <TextView
@@ -144,9 +149,9 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:text="+"
-                        android:fontFamily="@font/quicksand"
+                        android:fontFamily="@font/poppins_bold"
                         android:textStyle="bold"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/white" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -156,12 +161,24 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:background="@color/black"
+            android:layout_marginTop="30dp"
+            android:background="@color/gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hargaBarang"
             tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/txtKeterangan"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/poppins_light"
+            android:textSize="12dp"
+            android:text="- haha \n- hihi"
+            android:textColor="#636363"
+            app:layout_constraintBottom_toTopOf="@+id/hargaBarang"
+            app:layout_constraintStart_toEndOf="@+id/cardImg"
+            app:layout_constraintTop_toBottomOf="@+id/namaBarang" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>
